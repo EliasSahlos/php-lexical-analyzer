@@ -1,1 +1,1 @@
-echo hello
+echo if then  hello
