@@ -1,0 +1,14 @@
+<?php
+
+$x = 10;
+$y = 20;
+
+if ($x < $y) {
+    for ($i = 0; $i < 10; $i++) {
+        echo "Hello, world!\n";
+    }
+} else {
+    echo "Goodbye, world!\n";
+}
+
+?>
