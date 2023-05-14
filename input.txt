@@ -1,14 +1,17 @@
-<?php
+x=10
+y=20
+a=40
+b=80
 
-$x = 10;
-$y = 20;
+if x < y:
+    for i in range(10):
+        print("Hello, world!")
+else:
+    print("Goodbye, world!")
 
-if ($x < $y) {
-    for ($i = 0; $i < 10; $i++) {
-        echo "Hello, world!\n";
-    }
-} else {
-    echo "Goodbye, world!\n";
-}
-
-?>
+if a > b:
+    print("X is bigger than Y)
+elif a < b:
+    print("Y is bigger than X)
+else: 
+    print("X and Y are )
