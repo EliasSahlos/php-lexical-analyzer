@@ -19,16 +19,25 @@ number  ({nzdigit}{digits}*|0){optFr}{optExp}
 letter [A-Za-z]
 id {letter}({letter}|{digit})*
 %%
+
+
+
 {ws} {/* do nothing */}
-while   { attr=0; return (T_WHILE);}
-for     { attr=0; return (T_FOR);}
-echo    { attr=0; return (T_ECHO);}
-if      { attr=0; return(T_IF);}
-then    { attr=0; return(T_THEN);}
-else    { attr=0; return(T_ELSE);}
+
+
+"while"   { attr=0; return (T_WHILE);}
+"for"     { attr=0; return (T_FOR);}
+"if"      { attr=0; return(T_IF);}
+"then"    { attr=0; return(T_THEN);}
+"
+else"    { attr=0; return(T_ELSE);}
 [[:alpha:]]+    { attr=0; return(T_RANDOM);}
 .            { printf("Unkown text\n"); }
 <<EOF>>      { return 0;} 
+
+
+
+
 
 %%
 
