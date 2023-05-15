@@ -55,4 +55,5 @@ while ((token=yylex()) != 0)
 {printf("%s <%d,%d> \n",yytext,token,attr);}
 fclose(yyin);
 yyterminate();
+printf("hello mike")
 }
