@@ -6,16 +6,16 @@ b=80
 
 if x < y:
     for i in range(10):
-        print("Hello, world!")
+        print ("Hello, world!")
 else:
-    print("Goodbye, world!")
+    print ("Goodbye, world!")
 
 if a > b:
-    print("X is bigger than Y)
+    print ("X is bigger than Y")
 elif a < b:
-    print("Y is bigger than X)
+    print ("Y is bigger than X")
 else: 
-    print("X and Y are )
+    print ("X and Y are ")
 
 
 
