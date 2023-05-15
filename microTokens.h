@@ -1,6 +1,9 @@
-#define T_WHILE 1
-#define T_FOR 2
-#define T_IF 4
-#define T_THEN 5
-#define T_ELSE 6
-#define T_RANDOM 7
+#define DELIMETER 1
+#define LITERAL 2
+#define T_RANDOM 3
+#define KEYWORD 4
+#define IDENTIFIER 5
+#define OPERATOR 6
+#define TAB 7
+#define NL 8
+
