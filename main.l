@@ -34,7 +34,7 @@ id {letter}({letter}|{digit})*
 
 
 
-{ws} {tab_count++}
+{ws} {/*do nothing */}
 
 "and"		return KEYWORD;
 "assert"	return KEYWORD;
@@ -123,7 +123,7 @@ id {letter}({letter}|{digit})*
 "elif"[[:space:]]+[^:]+:[[:space:]]*\n[[:space:]]+ { if_elif_count++; }
 "else"[[:space:]]*:[[:space:]]*\n[[:space:]]+ { if_else_count++; }
 "for"[[:space:]]+[^:]+:[[:space:]]*\n[[:space:]]+ { for_count++; }
-print { print_count++;}
+
 
 
 .            { printf("Unkown text\n"); }
@@ -145,7 +145,7 @@ while ((token=yylex()) != 0)
 {printf("%s <%d,%d> \n",yytext,token,attr);}
 fclose(yyin);
 
-printf("\n--------------------");
+printf("\n--------------------\n");
 printf("IF Statement count: %d\n", if_count);
 printf("IF..ELIF.. Statement count: %d\n", if_elif_count);
 printf("IF..ELSE.. Statement count: %d\n", if_else_count);

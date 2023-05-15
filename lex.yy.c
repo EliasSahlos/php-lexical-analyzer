@@ -354,8 +354,8 @@ static void yynoreturn yy_fatal_error ( const char* msg  );
 	(yy_hold_char) = *yy_cp; \
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
-#define YY_NUM_RULES 85
-#define YY_END_OF_BUFFER 86
+#define YY_NUM_RULES 84
+#define YY_END_OF_BUFFER 85
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -365,10 +365,10 @@ struct yy_trans_info
 	};
 static const flex_int16_t yy_accept[196] =
     {   0,
-        0,    0,   86,   84,    1,    1,   84,   43,   46,   63,
+        0,    0,   85,   83,    1,    1,   83,   43,   46,   63,
        56,   57,   50,   52,   54,   51,   64,   48,   55,   66,
-       40,   53,   41,   62,   84,   84,   84,   84,   84,   84,
-       84,   84,   84,   84,   84,   84,   84,   84,   84,   84,
+       40,   53,   41,   62,   83,   83,   83,   83,   83,   83,
+       83,   83,   83,   83,   83,   83,   83,   83,   83,   83,
        58,   59,   44,   65,   60,   45,   61,   42,    1,   34,
        73,   74,   49,   70,   67,   68,   47,   72,   35,   37,
        39,   33,   38,   36,    0,    4,    0,    0,    0,    0,
@@ -617,7 +617,7 @@ char *yytext;
     int lineno =1;
     int attr =0;
     int idnum = 0;
-
+    int tab_count = 0;
     int var_count = 0;
     int if_count = 0;
     int if_elif_count = 0;
@@ -910,437 +910,432 @@ case 1:
 /* rule 1 can match eol */
 YY_RULE_SETUP
 #line 37 "main.l"
-{/* do nothing */}
+{/*do nothing */}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 42 "main.l"
+#line 39 "main.l"
 return KEYWORD;
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 43 "main.l"
+#line 40 "main.l"
 return KEYWORD;
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 44 "main.l"
+#line 41 "main.l"
 return KEYWORD;
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 45 "main.l"
+#line 42 "main.l"
 return KEYWORD;
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 46 "main.l"
+#line 43 "main.l"
 return KEYWORD;
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 47 "main.l"
+#line 44 "main.l"
 return KEYWORD;
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 48 "main.l"
+#line 45 "main.l"
 return KEYWORD;
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 49 "main.l"
+#line 46 "main.l"
 return KEYWORD;
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 50 "main.l"
+#line 47 "main.l"
 return KEYWORD;
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 51 "main.l"
+#line 48 "main.l"
 return KEYWORD;
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 52 "main.l"
+#line 49 "main.l"
 return KEYWORD;
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 53 "main.l"
+#line 50 "main.l"
 return KEYWORD;
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 54 "main.l"
+#line 51 "main.l"
 return KEYWORD;
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 55 "main.l"
+#line 52 "main.l"
 return KEYWORD;
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 56 "main.l"
+#line 53 "main.l"
 return KEYWORD;
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 57 "main.l"
+#line 54 "main.l"
 return KEYWORD;
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 58 "main.l"
+#line 55 "main.l"
 return KEYWORD;
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 59 "main.l"
+#line 56 "main.l"
 return KEYWORD;
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 60 "main.l"
+#line 57 "main.l"
 return KEYWORD;
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 61 "main.l"
+#line 58 "main.l"
 return KEYWORD;
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 62 "main.l"
+#line 59 "main.l"
 return KEYWORD;
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 63 "main.l"
+#line 60 "main.l"
 return KEYWORD;
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 64 "main.l"
+#line 61 "main.l"
 return KEYWORD;
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 65 "main.l"
+#line 62 "main.l"
 return KEYWORD;
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 66 "main.l"
+#line 63 "main.l"
 return KEYWORD;
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 67 "main.l"
+#line 64 "main.l"
 return KEYWORD;
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 68 "main.l"
+#line 65 "main.l"
 return KEYWORD;
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 69 "main.l"
+#line 66 "main.l"
 return KEYWORD;
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 70 "main.l"
+#line 67 "main.l"
 return KEYWORD;
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 71 "main.l"
+#line 68 "main.l"
 return KEYWORD;
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 72 "main.l"
+#line 69 "main.l"
 return KEYWORD;
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 75 "main.l"
+#line 72 "main.l"
 return OPERATOR;
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 76 "main.l"
+#line 73 "main.l"
 return OPERATOR;
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 77 "main.l"
+#line 74 "main.l"
 return OPERATOR;
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 78 "main.l"
+#line 75 "main.l"
 return OPERATOR;
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 79 "main.l"
+#line 76 "main.l"
 return OPERATOR;
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 80 "main.l"
+#line 77 "main.l"
 return OPERATOR;
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 81 "main.l"
+#line 78 "main.l"
 return OPERATOR;
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 82 "main.l"
+#line 79 "main.l"
 return OPERATOR;
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 83 "main.l"
+#line 80 "main.l"
 return OPERATOR;
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 84 "main.l"
+#line 81 "main.l"
 return OPERATOR;
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 85 "main.l"
+#line 82 "main.l"
 return OPERATOR;
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 86 "main.l"
+#line 83 "main.l"
 return OPERATOR;
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 87 "main.l"
+#line 84 "main.l"
 return OPERATOR;
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 88 "main.l"
+#line 85 "main.l"
 return OPERATOR;
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 89 "main.l"
+#line 86 "main.l"
 return OPERATOR;
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 90 "main.l"
+#line 87 "main.l"
 return OPERATOR;
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 91 "main.l"
+#line 88 "main.l"
 return OPERATOR;
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 92 "main.l"
+#line 89 "main.l"
 return OPERATOR;
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 93 "main.l"
+#line 90 "main.l"
 return OPERATOR;
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 94 "main.l"
+#line 91 "main.l"
 return OPERATOR;
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 97 "main.l"
+#line 94 "main.l"
 return DELIMETER;
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 98 "main.l"
+#line 95 "main.l"
 return DELIMETER;
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 99 "main.l"
+#line 96 "main.l"
 return DELIMETER;
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 100 "main.l"
+#line 97 "main.l"
 return DELIMETER;
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 101 "main.l"
+#line 98 "main.l"
 return DELIMETER;
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 102 "main.l"
+#line 99 "main.l"
 return DELIMETER;
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 103 "main.l"
+#line 100 "main.l"
 return DELIMETER;
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 104 "main.l"
+#line 101 "main.l"
 return DELIMETER;
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 105 "main.l"
+#line 102 "main.l"
 return DELIMETER;
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 106 "main.l"
+#line 103 "main.l"
 return DELIMETER;
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-#line 107 "main.l"
+#line 104 "main.l"
 return DELIMETER;
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
-#line 108 "main.l"
+#line 105 "main.l"
 return DELIMETER;
 	YY_BREAK
 case 65:
 YY_RULE_SETUP
-#line 109 "main.l"
+#line 106 "main.l"
 return DELIMETER;
 	YY_BREAK
 case 66:
 YY_RULE_SETUP
-#line 110 "main.l"
+#line 107 "main.l"
 return DELIMETER;
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
-#line 111 "main.l"
+#line 108 "main.l"
 return DELIMETER;
 	YY_BREAK
 case 68:
 YY_RULE_SETUP
-#line 112 "main.l"
+#line 109 "main.l"
 return DELIMETER;
 	YY_BREAK
 case 69:
 YY_RULE_SETUP
-#line 113 "main.l"
+#line 110 "main.l"
 return DELIMETER;
 	YY_BREAK
 case 70:
 YY_RULE_SETUP
-#line 114 "main.l"
+#line 111 "main.l"
 return DELIMETER;
 	YY_BREAK
 case 71:
 YY_RULE_SETUP
-#line 115 "main.l"
+#line 112 "main.l"
 return DELIMETER;
 	YY_BREAK
 case 72:
 YY_RULE_SETUP
-#line 116 "main.l"
+#line 113 "main.l"
 return DELIMETER;
 	YY_BREAK
 case 73:
 YY_RULE_SETUP
-#line 117 "main.l"
+#line 114 "main.l"
 return DELIMETER;
 	YY_BREAK
 case 74:
 YY_RULE_SETUP
-#line 118 "main.l"
+#line 115 "main.l"
 return DELIMETER;
 	YY_BREAK
 case 75:
 YY_RULE_SETUP
-#line 119 "main.l"
+#line 116 "main.l"
 return DELIMETER;
 	YY_BREAK
 case 76:
 YY_RULE_SETUP
-#line 120 "main.l"
+#line 117 "main.l"
 return DELIMETER;
 	YY_BREAK
 case 77:
 YY_RULE_SETUP
-#line 121 "main.l"
+#line 118 "main.l"
 return DELIMETER;
 	YY_BREAK
 case 78:
 YY_RULE_SETUP
-#line 122 "main.l"
+#line 119 "main.l"
 return DELIMETER;
 	YY_BREAK
 case 79:
 /* rule 79 can match eol */
 YY_RULE_SETUP
-#line 125 "main.l"
+#line 122 "main.l"
 { if_count++; }
 	YY_BREAK
 case 80:
 /* rule 80 can match eol */
 YY_RULE_SETUP
-#line 126 "main.l"
+#line 123 "main.l"
 { if_elif_count++; }
 	YY_BREAK
 case 81:
 /* rule 81 can match eol */
 YY_RULE_SETUP
-#line 127 "main.l"
+#line 124 "main.l"
 { if_else_count++; }
 	YY_BREAK
 case 82:
 /* rule 82 can match eol */
 YY_RULE_SETUP
-#line 128 "main.l"
+#line 125 "main.l"
 { for_count++; }
 	YY_BREAK
 case 83:
 YY_RULE_SETUP
 #line 129 "main.l"
-{ print_count++;}
+{ printf("Unkown text\n"); }
+	YY_BREAK
+case YY_STATE_EOF(INITIAL):
+#line 130 "main.l"
+{ return 0;} 
 	YY_BREAK
 case 84:
 YY_RULE_SETUP
 #line 132 "main.l"
-{ printf("Unkown text\n"); }
-	YY_BREAK
-case YY_STATE_EOF(INITIAL):
-#line 133 "main.l"
-{ return 0;} 
-	YY_BREAK
-case 85:
-YY_RULE_SETUP
-#line 135 "main.l"
 ECHO;
 	YY_BREAK
-#line 1344 "lex.yy.c"
+#line 1339 "lex.yy.c"
 
 	case YY_END_OF_BUFFER:
 		{
@@ -2343,7 +2338,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 135 "main.l"
+#line 132 "main.l"
 
 
 int main(int argc, char *argv[])
@@ -2360,13 +2355,12 @@ while ((token=yylex()) != 0)
 {printf("%s <%d,%d> \n",yytext,token,attr);}
 fclose(yyin);
 
- printf("\n--------------------");
-    printf("\nVariable count: %d\n", var_count);
-    printf("IF Statement count: %d\n", if_count);
-    printf("IF..ELIF.. Statement count: %d\n", if_elif_count);
-    printf("IF..ELSE.. Statement count: %d\n", if_else_count);
-    printf("FOR Statement count: %d\n", for_count);
-    printf("Number of Print :  %d\n", print_count);
+printf("\n--------------------\n");
+printf("IF Statement count: %d\n", if_count);
+printf("IF..ELIF.. Statement count: %d\n", if_elif_count);
+printf("IF..ELSE.. Statement count: %d\n", if_else_count);
+printf("FOR Statement count: %d\n", for_count);
+
     
 return 0;
 
