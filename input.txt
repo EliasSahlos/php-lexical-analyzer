@@ -2,16 +2,30 @@ x=10
 y=20
 a=40
 b=80
+testvar = input
 
-if x < y:
+if (x < y):
     for i in range(10):
         print("Hello, world!")
 else:
     print("Goodbye, world!")
 
-if a > b:
-    print("X is bigger than Y)
-elif a < b:
-    print("Y is bigger than X)
+if (a > b):
+    print("X is bigger than Y")
+elif (a < b):
+    print("Y is bigger than X")
 else: 
-    print("X and Y are )
+    print("X and Y are")
+
+
+
+def sum(arr):
+    numbersArr = ["1","2","3","4"]
+    sum = 0
+
+    for i in arr:
+        sum = sum + i
+ 
+    return(sum)
+ 
+ 
