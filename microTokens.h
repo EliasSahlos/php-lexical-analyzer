@@ -6,4 +6,3 @@
 #define OPERATOR 6
 #define TAB 7
 #define NL 8
-
