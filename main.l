@@ -5,6 +5,14 @@
     int lineno =1;
     int attr =0;
     int idnum = 0;
+
+    int var_count = 0;
+    int if_count = 0;
+    int if_elif_count = 0;
+    int if_else_count = 0;
+    int for_count = 0;
+    int print_count = 0;
+    int line_number = 1;
 %}
 
 %option noyywrap
@@ -25,8 +33,6 @@ id {letter}({letter}|{digit})*
 
 {ws} {/* do nothing */}
 
-
-["#"][0-9A-Za-z#$%=@!{},`~&*()<>?.:;_|^/+\t\r\n\[\]'-]+[\n]	;
 
 
 
@@ -99,39 +105,28 @@ id {letter}({letter}|{digit})*
 "."		return DELIMETER;
 "`"		return DELIMETER;
 ";"		return DELIMETER;
-"+="		return DELIMETER;
-"-="		return DELIMETER;
-"**="		return DELIMETER;
-"*="		return DELIMETER;
-"//="		return DELIMETER;
-"/="		return DELIMETER;
-"%="		return DELIMETER;
-"&="		return DELIMETER;
-"|="		return DELIMETER;
-"^="		return DELIMETER;
-">>="		return DELIMETER;
-"<<="		return DELIMETER;
+"+="	return DELIMETER;
+"-="	return DELIMETER;
+"**="	return DELIMETER;
+"*="	return DELIMETER;
+"//="	return DELIMETER;
+"/="	return DELIMETER;
+"%="	return DELIMETER;
+"&="	return DELIMETER;
+"|="	return DELIMETER;
+"^="	return DELIMETER;
+">>="	return DELIMETER;
+"<<="	return DELIMETER;
 
 
-[0-9]*[l|L]	return LITERAL;
-
-([a-fA-F0-9])*|([0]+)|([0-9a-fA-F]*)?	return LITERAL;
-
-\'[ 0-9A-Za-z#$%=@!{},`~&*()<>?.:;_|^/+\t\r\n\[\]"-]*\'	return LITERAL;
-
-["][0-9A-Za-z#$%=@!{},`~&*()<>?.:;_|^/+\t\r\n\[\]'-]*["]	return LITERAL;
-
-[0-9]+([.][0-9]+)?(("e"|"E")[+|-]?[0-9]+)?([+|-][0-9]*("j"|"J"))?	return LITERAL;
-
-
-[a-zA-Z]+[_]?[a-zA-Z0-9]*	return IDENTIFIER;
+"if"[[:space:]]+[^:]+:[[:space:]]*\n[[:space:]]+ { if_count++; }
+"elif"[[:space:]]+[^:]+:[[:space:]]*\n[[:space:]]+ { if_elif_count++; }
+"else"[[:space:]]*:[[:space:]]*\n[[:space:]]+ { if_else_count++; }
+"for"[[:space:]]+[^:]+:[[:space:]]*\n[[:space:]]+ { for_count++; }
+print+ { print_count++;}
 
 .            { printf("Unkown text\n"); }
 <<EOF>>      { return 0;} 
-
-
-
-
 
 %%
 
@@ -148,6 +143,17 @@ int token;
 while ((token=yylex()) != 0)
 {printf("%s <%d,%d> \n",yytext,token,attr);}
 fclose(yyin);
+
+ printf("\n--------------------");
+    printf("\nVariable count: %d\n", var_count);
+    printf("IF Statement count: %d\n", if_count);
+    printf("IF..ELIF.. Statement count: %d\n", if_elif_count);
+    printf("IF..ELSE.. Statement count: %d\n", if_else_count);
+    printf("FOR Statement count: %d\n", for_count);
+    printf("Number of Print :  %d\n", print_count);
+    
+return 0;
+
 yyterminate();
 
 }
