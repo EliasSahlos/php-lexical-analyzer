@@ -25,6 +25,7 @@ def sum(arr):
 
     for i in arr:
         sum = sum + i
+    for j in arr2 :
  
     return(sum)
  

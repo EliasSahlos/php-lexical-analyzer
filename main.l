@@ -10,6 +10,7 @@ int if_else_count = 0;
 int for_count = 0;
 int print_count = 0;
 int input_count = 0;
+int for_in_count = 0;
 void ret_print(char *token_type);
 void yyerror();
 %}
@@ -29,7 +30,7 @@ input_statement ((input|INPUT)"("[^)]")")
 if_statement ((if|IF){white_space}+"("[^)]+")":)
 elif_statement ((elif|ELIF){white_space}*"("[^)]*")":)
 else_statement ((else|ELSE)*":")
-
+for_statement ((for|FOR)[ \t]+({word}|{digit})+[ \t]+(in|IN)[ \ t]+({word}|{digit})+[ \t]*":")
 %%
 
 {white_space} ret_print("SPACE");
@@ -76,6 +77,7 @@ else_statement ((else|ELSE)*":")
 {if_statement} { ret_print("If Statement"); if_count++;}
 {elif_statement} { ret_print("Else If Statment"); if_elif_count++;}
 {else_statement} { ret_print("Else Statment"); if_else_count++;}
+{for_statement} { ret_print("For in Statement"); for_in_count++;}
 "\n" { line_number += 1; }
 . { yyerror("Unrecognized character"); }
 
@@ -101,7 +103,7 @@ printf("\n--------------------\n");
     printf("IF Statement count: %d\n", if_count);
     printf("IF..ELIF..ELSE.. Statement count: %d\n", if_elif_count);
     printf("IF..ELSE.. Statement count: %d\n", if_else_count);
-    printf("FOR Statement count: %d\n", for_count);
+    printf("FOR Statement count: %d\n", for_in_count);
     printf("Number of Print :  %d\n", print_count);
     printf("Number of User Input :  %d\n", input_count);
 return 0;
