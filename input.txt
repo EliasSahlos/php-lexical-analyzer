@@ -23,9 +23,10 @@ def sum(arr):
     numbersArr = ["1","2","3","4"]
     sum = 0
 
-    for i in arr:
+    for i in arr: 
         sum = sum + i
-    for j in arr2 :
+    for j in arr2:
+        for y in arr(12):
  
     return(sum)
  

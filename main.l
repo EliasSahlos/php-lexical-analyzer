@@ -30,7 +30,8 @@ input_statement ((input|INPUT)"("[^)]")")
 if_statement ((if|IF){white_space}+"("[^)]+")":)
 elif_statement ((elif|ELIF){white_space}*"("[^)]*")":)
 else_statement ((else|ELSE)*":")
-for_statement ((for|FOR)[ \t]+({word}|{digit})+[ \t]+(in|IN)[ \ t]+({word}|{digit})+[ \t]*":")
+for_statement ((for|FOR)[ \t]+({word}|{digit})+[ \t]+(in|IN)[ \ t]+({word}|{digit}|({word}|{digit}*"("{digit}*")"))+[ \t]*":")
+
 %%
 
 {white_space} ret_print("SPACE");
