@@ -8,7 +8,7 @@ if (x < y):
     for i in range(10):
         print("Hello, world!")
 else:
-    print("Goodbye, world!")
+    print()
 
 if (a > b):
     print("X is bigger than Y")

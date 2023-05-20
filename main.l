@@ -3,14 +3,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
+
 int line_number = 1;
 int if_count = 0;
 int if_elif_count = 0;
 int if_else_count = 0;
 int for_count = 0;
-int print_count = 0;
-int input_count = 0;
+int print_statement_count = 0;
+int input_statement_count = 0;
 int for_in_count = 0;
+
+
 void ret_print(char *token_type);
 void yyerror();
 %}
@@ -25,8 +29,8 @@ INT ("0"|[0-9]{digit}*)
 FLOAT ("0"|{digit}*("."|","){digit}+)
 STRING \"{print}*\"
 
-print_statement ((print|PRINT)"("[^)]")")
-input_statement ((input|INPUT)\s*\(\s*\))
+print_statement ((print|PRINT)\s*"("+{STRING}+")")
+input_statement ((input|INPUT)\s*"("\s*")")
 if_statement ((if|IF){white_space}+"("[^)]+")":)
 elif_statement ((elif|ELIF){white_space}*"("[^)]*")":)
 else_statement ((else|ELSE)*":")
@@ -41,8 +45,8 @@ for_statement ((for|FOR)[ \t]+({word}|{digit})+[ \t]+(in|IN)[ \ t]+({word}|{digi
 "for"|"FOR" { ret_print("KEYWORD_FOR"); for_count++; }
 "return"|"RETURN" { ret_print("KEYWORD_RETURN"); }
 "input"|"INPUT" { ret_print("KEYWORD_INPUT");}
-"print"|"PRINT" { ret_print("KEYWORD_PRINT"); print_count++;}
-"range"|"RANGE" { ret_print("RANGE_KEYWORD"); input_count++;}
+"print"|"PRINT" { ret_print("KEYWORD_PRINT"); }
+"range"|"RANGE" { ret_print("RANGE_KEYWORD");}
 "+" { ret_print("ADD_OPERATOR"); }
 "-" { ret_print("SUB_OPERATOR"); }
 "*" { ret_print("MULTIPLY_OPERATOR"); }
@@ -73,8 +77,8 @@ for_statement ((for|FOR)[ \t]+({word}|{digit})+[ \t]+(in|IN)[ \ t]+({word}|{digi
 {INT} { ret_print("INTEGER"); }
 {FLOAT} { ret_print("FLOAT"); }
 {STRING} { ret_print("STRING"); }
-{print_statement} { ret_print("Print Statement");}
-{input_statement} { ret_print("Input Statement"); input_count++;}
+{print_statement} { ret_print("Print Statement"); print_statement_count++;}
+{input_statement} { ret_print("Input Statement"); input_statement_count++;}
 {if_statement} { ret_print("If Statement"); if_count++;}
 {elif_statement} { ret_print("Else If Statment"); if_elif_count++;}
 {else_statement} { ret_print("Else Statment"); if_else_count++;}
@@ -97,15 +101,23 @@ void yyerror(char *message)
 
 int main(int argc, char *argv[])
 {
-yyin = fopen("input.txt", "r");
-yylex();
-fclose(yyin);
-printf("\n--------------------\n");
+    yyin = fopen("input.txt", "r");
+    printf("--------------------------------------------------------------------\n");
+    printf("\t\t\tPROGRAM INFORMATION\t\t\t\n");
+    printf("--------------------------------------------------------------------\n");
+    yylex();
+    fclose(yyin);
+
+    printf("\n-------------------------------------------------------\n");
+    printf("\t\tSTATISTICS INFORMATION\t\t\n");
+    printf("-------------------------------------------------------\n");
+    printf("|Statements|\n");
+    printf("-----------------------\n");
     printf("IF Statement count: %d\n", if_count);
     printf("IF..ELIF..ELSE.. Statement count: %d\n", if_elif_count);
     printf("IF..ELSE.. Statement count: %d\n", if_else_count);
     printf("FOR Statement count: %d\n", for_in_count);
-    printf("Number of Print :  %d\n", print_count);
-    printf("Number of User Input :  %d\n", input_count);
-return 0;
+    printf("Number of Print :  %d\n", print_statement_count);
+    printf("Number of User Input :  %d\n", input_statement_count);
 }
+    
