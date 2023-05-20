@@ -26,7 +26,7 @@ FLOAT ("0"|{digit}*("."|","){digit}+)
 STRING \"{print}*\"
 
 print_statement ((print|PRINT)"("[^)]")")
-input_statement ((input|INPUT)"("[^)]")")
+input_statement ((input|INPUT)\s*\(\s*\))
 if_statement ((if|IF){white_space}+"("[^)]+")":)
 elif_statement ((elif|ELIF){white_space}*"("[^)]*")":)
 else_statement ((else|ELSE)*":")
@@ -40,7 +40,7 @@ for_statement ((for|FOR)[ \t]+({word}|{digit})+[ \t]+(in|IN)[ \ t]+({word}|{digi
 "elif"|"ELIF" { ret_print("KEYWORD_ELIF"); }
 "for"|"FOR" { ret_print("KEYWORD_FOR"); for_count++; }
 "return"|"RETURN" { ret_print("KEYWORD_RETURN"); }
-"input"|"INPUT" { ret_print("KEYWORD_INPUT"); input_count++;}
+"input"|"INPUT" { ret_print("KEYWORD_INPUT");}
 "print"|"PRINT" { ret_print("KEYWORD_PRINT"); print_count++;}
 "range"|"RANGE" { ret_print("RANGE_KEYWORD"); input_count++;}
 "+" { ret_print("ADD_OPERATOR"); }
@@ -74,7 +74,7 @@ for_statement ((for|FOR)[ \t]+({word}|{digit})+[ \t]+(in|IN)[ \ t]+({word}|{digi
 {FLOAT} { ret_print("FLOAT"); }
 {STRING} { ret_print("STRING"); }
 {print_statement} { ret_print("Print Statement");}
-{input_statement} { ret_print("Input Statement"); }
+{input_statement} { ret_print("Input Statement"); input_count++;}
 {if_statement} { ret_print("If Statement"); if_count++;}
 {elif_statement} { ret_print("Else If Statment"); if_elif_count++;}
 {else_statement} { ret_print("Else Statment"); if_else_count++;}

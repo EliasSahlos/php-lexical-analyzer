@@ -2,7 +2,7 @@ x=10
 y=20
 a=40
 b=80
-testvar = input
+testvar = input()
 
 if (x < y):
     for i in range(10):
