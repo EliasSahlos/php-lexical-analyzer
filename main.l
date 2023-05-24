@@ -33,7 +33,7 @@ print_statement ((print|PRINT){white_space}"("+{STRING}+")")
 input_statement ((input|INPUT){white_space}"("\s*")")
 if_statement ((if|IF){white_space}+"("[^)]+")":)
 elif_statement ((elif|ELIF){white_space}*"("[^)]*")":)
-else_statement ((else|ELSE)*":")
+else_statement ((else|ELSE)+":")
 for_statement ((for|FOR)[ \t]+({word}|{digit})+[ \t]+(in|IN)[ \ t]+({word}|{digit}|({word}|{digit}*"("{digit}*")"))+[ \t]*":")
 function_statement ((def|DEF){white_space}({variable}|{alnum})"("{variable}")":)
 %%
