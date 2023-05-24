@@ -8,7 +8,7 @@ if (x < y):
     for i in range(10):
         print("Hello, world!")
 else:
-    print()
+    print  ()
 
 if (a > b):
     print("X is bigger than Y")
@@ -17,7 +17,7 @@ elif (a < b):
 else: 
     print("X and Y are")
 
-
+falsevar = input()
 
 def sum(arr):
     numbersArr = ["1","2","3","4"]
