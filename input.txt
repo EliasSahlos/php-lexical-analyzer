@@ -1,14 +1,19 @@
-x=10
-y=20
-a=40
-b=80
-testvar = input()
+a = 10
+b = 20
+a = 40
+b = 80
+
+add = a + b
+minus = b - a
+multiply = a * 4
+divide = a / 2  
+testvar = input())
 
 if (x < y):
     for i in range(10):
         print("Hello, world!")
 else:
-    print  ()
+    print("This is inside an else") 
 
 if (a > b):
     print("X is bigger than Y")
