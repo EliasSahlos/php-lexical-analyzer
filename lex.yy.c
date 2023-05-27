@@ -2228,7 +2228,9 @@ void yyerror(char *message)
 
 int main(int argc, char *argv[])
 {
+    
     yyin = fopen("input.py", "r");
+      
     printf("--------------------------------------------------------------------\n");
     printf("\t\t\tPROGRAM INFORMATION\t\t\t\n");
     printf("--------------------------------------------------------------------\n");

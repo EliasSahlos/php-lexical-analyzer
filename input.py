@@ -7,7 +7,7 @@ add = a + b
 minus = b - a
 multiply = a * 4
 divide = a / 2  
-testvar = input()
+testvar = input())
 
 if (x < y):
     for i in range(10):
@@ -24,15 +24,16 @@ else:
 
 falsevar = input()
 
+
+
 def sum(arr):
     numbersArr = ["1","2","3","4"]
     sum = 0
 
     for i in arr: 
         sum = sum + i
-    for j in arr2:
+    for j in arr:
         for y in arr(12):
             j=j+1
- return(sum)
- 
- 
+    return sum
+
