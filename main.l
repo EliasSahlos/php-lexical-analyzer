@@ -52,7 +52,7 @@ elif_statement ((elif|ELIF){white_space}*"("[^)]*")":)
 else_statement ((else|ELSE)+":")
 for_statement ((for|FOR)[ \t]+({alnum})+[ \t]+(in|IN)[ \ t]+({alnum}|({alnum}*"("{digit}*")"))+[ \t]*":")
 
-multiply_for ({for_statement})[ \n]*[ \t]*({for_statement})
+multiply_for ({for_statement})([ \n]*[ \t]+({for_statement}))+
 
 function_statement ((def|DEF){white_space}({variable}|{alnum})"("{variable}")":)
 return_statement ((return|RETURN)+"("+{variable}+")")
