@@ -51,9 +51,7 @@ if_statement ((if|IF){white_space}+"("[^)]+")":)
 elif_statement ((elif|ELIF){white_space}*"("[^)]*")":)
 else_statement ((else|ELSE)+":")
 for_statement ((for|FOR)[ \t]+({alnum})+[ \t]+(in|IN)[ \ t]+({alnum}|({alnum}*"("{digit}*")"))+[ \t]*":")
-
 multiply_for ({for_statement})([ \n]*[ \t]+({for_statement}))+
-
 function_statement ((def|DEF){white_space}({variable}|{alnum})"("{variable}")":)
 return_statement ((return|RETURN)+"("+{variable}+")")
 add_operation ({variable}+{white_space}"="{white_space}+{variable}+{white_space}"+"{white_space}+({vardig}))
@@ -166,4 +164,5 @@ int main(int argc, char *argv[])
     printf("Typing Errors :  %d\n", type_errors);
     printf("\n");
 }
+
     

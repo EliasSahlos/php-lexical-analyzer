@@ -39,8 +39,9 @@ def sum(arr):
 
 for j in arr:
         for y in arr(12):
-            
+            j=j+1
 
 for y in arr(12):
     for y in arr(12):
         for y in arr(12):
+            y =y+1
