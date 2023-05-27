@@ -44,7 +44,7 @@ print_statement ((print|PRINT){white_space}"("+{STRING}+")")
 if_statement ((if|IF){white_space}+"("[^)]+")":)
 elif_statement ((elif|ELIF){white_space}*"("[^)]*")":)
 else_statement ((else|ELSE)+":")
-for_statement ((for|FOR)[ \t]+({word}|{digit})+[ \t]+(in|IN)[ \ t]+({word}|{digit}|({word}|{digit}*"("{digit}*")"))+[ \t]*":")
+for_statement ((for|FOR)[ \t]+({alnum})+[ \t]+(in|IN)[ \ t]+({alnum}|({alnum}*"("{digit}*")"))+[ \t]*":")
 function_statement ((def|DEF){white_space}({variable}|{alnum})"("{variable}")":)
 return_statement ((return|RETURN)+"("+{variable}+")")
 add_operation ({variable}+{white_space}"="{white_space}+{variable}+{white_space}"+"{white_space}+({variable}|{digit}))
@@ -108,7 +108,7 @@ int main(int argc, char *argv[])
     yylex();
     fclose(yyin);
 
-    printf("\n----------------------------------------------------\n");
+    printf("\n----------------------------------------------------\n"); 
     printf("\t\tCODE STATISTICS\t\t\n");
     printf("----------------------------------------------------\n");
     printf("|IF Statements|\n");
