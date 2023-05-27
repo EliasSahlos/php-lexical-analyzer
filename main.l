@@ -11,6 +11,7 @@ int if_count = 0;
 int if_elif_count = 0;
 int if_else_count = 0;
 int for_count = 0;
+int mult_for_count = 0;
 int print_statement_count = 0;
 int input_statement_count = 0;
 int for_in_count = 0;
@@ -35,6 +36,7 @@ white_space [ \t]*
 word [a-zA-Z_]
 digit [0-9]
 alnum ({word}|{digit})
+vardig ({variable}|{digit})
 print [ -~]
 variable ({word}*)
 INT ("0"|[0-9]{digit}*)
@@ -49,12 +51,15 @@ if_statement ((if|IF){white_space}+"("[^)]+")":)
 elif_statement ((elif|ELIF){white_space}*"("[^)]*")":)
 else_statement ((else|ELSE)+":")
 for_statement ((for|FOR)[ \t]+({alnum})+[ \t]+(in|IN)[ \ t]+({alnum}|({alnum}*"("{digit}*")"))+[ \t]*":")
+
+multiply_for ({for_statement})[ \n]*[ \t]*({for_statement})
+
 function_statement ((def|DEF){white_space}({variable}|{alnum})"("{variable}")":)
 return_statement ((return|RETURN)+"("+{variable}+")")
-add_operation ({variable}+{white_space}"="{white_space}+{variable}+{white_space}"+"{white_space}+({variable}|{digit}))
-minus_operation ({variable}+{white_space}"="{white_space}+{variable}+{white_space}"-"{white_space}+({variable}|{digit}))
-multiply_operation ({variable}+{white_space}"="{white_space}+{variable}+{white_space}"*"{white_space}+({variable}|{digit}))
-divide_operation ({variable}+{white_space}"="{white_space}+{variable}+{white_space}"/"{white_space}+({variable}|{digit}))
+add_operation ({variable}+{white_space}"="{white_space}+{variable}+{white_space}"+"{white_space}+({vardig}))
+minus_operation ({variable}+{white_space}"="{white_space}+{variable}+{white_space}"-"{white_space}+({vardig}))
+multiply_operation ({variable}+{white_space}"="{white_space}+{variable}+{white_space}"*"{white_space}+({vardig}))
+divide_operation ({variable}+{white_space}"="{white_space}+{variable}+{white_space}"/"{white_space}+({vardig}))
 %%
 
 {white_space} ret_print("SPACE");
@@ -81,6 +86,7 @@ divide_operation ({variable}+{white_space}"="{white_space}+{variable}+{white_spa
 {elif_statement} { ret_print("Else If Statement"); if_elif_count++;}
 {else_statement} { ret_print("Else Statement"); if_else_count++;}
 {for_statement} { ret_print("For in Statement"); for_in_count++;}
+{multiply_for}  { ret_print("Multiply For Statement"); mult_for_count++;}
 {function_statement} { ret_print("Function Statement"); function_statemnt_count++;}
 {add_operation} { ret_print("Add Operation"); add_operation_count++; }
 {minus_operation} { ret_print("Minus Operation"); minus_operation_count++; }
@@ -132,6 +138,8 @@ int main(int argc, char *argv[])
     printf("|FOR Statements|\n");
     printf("---------------------\n");
     printf("FOR Statement count: %d\n", for_in_count);
+    printf("Multiply For Statement count: %d\n", mult_for_count);
+
     printf("\n");
     printf("|User Interaction Statements|\n");
     printf("---------------------\n");
