@@ -7,7 +7,7 @@ add = a + b
 minus = b - a
 multiply = a * 4
 divide = a / 2  
-testvar = input())
+testvar = input()
 
 if (x < y):
     for i in range(10):
@@ -32,7 +32,7 @@ def sum(arr):
         sum = sum + i
     for j in arr2:
         for y in arr(12):
- 
-    return(sum)
+            j=j+1
+ return(sum)
  
  

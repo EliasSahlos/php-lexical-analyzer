@@ -739,6 +739,7 @@ char *yytext;
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#include "microTokens.h"
 
 int line_number = 1;
 int if_count = 0;
@@ -758,10 +759,13 @@ int multiply_operation_count = 0;
 int divide_operation_count = 0;
 int table_declaration_count = 0;
 
+int error_count = 0;
+int MAX_ERRORS = 3;
+
 void ret_print(char *token_type);
 void yyerror();
-#line 764 "lex.yy.c"
-#line 765 "lex.yy.c"
+#line 768 "lex.yy.c"
+#line 769 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -978,10 +982,10 @@ YY_DECL
 		}
 
 	{
-#line 54 "main.l"
+#line 58 "main.l"
 
 
-#line 985 "lex.yy.c"
+#line 989 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -1040,163 +1044,163 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 56 "main.l"
+#line 60 "main.l"
 ret_print("SPACE");
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 57 "main.l"
-{ ret_print("KEYWORD_IF"); if_count++;}
+#line 61 "main.l"
+{ ret_print("T_IF"); if_count++; return T_IF;}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 58 "main.l"
-{ ret_print("KEYWORD_ELSE"); }
+#line 62 "main.l"
+{ ret_print("T_ELSE"); return T_ELSE;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 59 "main.l"
-{ ret_print("KEYWORD_ELIF"); }
+#line 63 "main.l"
+{ ret_print("T_ELIF"); return T_ELIF; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 60 "main.l"
-{ ret_print("KEYWORD_FOR"); for_count++; }
+#line 64 "main.l"
+{ ret_print("T_FOR"); for_count++; return T_FOR; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 61 "main.l"
+#line 65 "main.l"
 { ret_print("KEYWORD_RETURN"); }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 62 "main.l"
+#line 66 "main.l"
 { ret_print("KEYWORD_INPUT"); }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 63 "main.l"
+#line 67 "main.l"
 { ret_print("KEYWORD_PRINT"); }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 64 "main.l"
+#line 68 "main.l"
 { ret_print("RANGE_KEYWORD"); }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 65 "main.l"
+#line 69 "main.l"
 { ret_print("DEF_KEYWORD"); }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 67 "main.l"
+#line 71 "main.l"
 { ret_print("Table Declaration"); table_declaration_count++; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 68 "main.l"
+#line 72 "main.l"
 { ret_print("Return Statement"); return_statement_count++; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 69 "main.l"
+#line 73 "main.l"
 { ret_print("Variable Declaration"); variable_declaration_count++;}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 70 "main.l"
+#line 74 "main.l"
 { ret_print("Variable"); }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 71 "main.l"
+#line 75 "main.l"
 { ret_print("INTEGER"); }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 72 "main.l"
+#line 76 "main.l"
 { ret_print("FLOAT"); }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 73 "main.l"
+#line 77 "main.l"
 { ret_print("STRING"); }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 74 "main.l"
+#line 78 "main.l"
 { ret_print("Print Statement"); print_statement_count++;}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 75 "main.l"
+#line 79 "main.l"
 { ret_print("Input Statement"); input_statement_count++;}
 	YY_BREAK
 case 20:
 /* rule 20 can match eol */
 YY_RULE_SETUP
-#line 76 "main.l"
+#line 80 "main.l"
 { ret_print("If Statement"); if_count++;}
 	YY_BREAK
 case 21:
 /* rule 21 can match eol */
 YY_RULE_SETUP
-#line 77 "main.l"
+#line 81 "main.l"
 { ret_print("Else If Statement"); if_elif_count++;}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 78 "main.l"
+#line 82 "main.l"
 { ret_print("Else Statement"); if_else_count++;}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 79 "main.l"
+#line 83 "main.l"
 { ret_print("For in Statement"); for_in_count++;}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 80 "main.l"
+#line 84 "main.l"
 { ret_print("Function Statement"); function_statemnt_count++;}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 81 "main.l"
+#line 85 "main.l"
 { ret_print("Add Operation"); add_operation_count++; }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 82 "main.l"
+#line 86 "main.l"
 { ret_print("Minus Operation"); minus_operation_count++; }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 83 "main.l"
+#line 87 "main.l"
 { ret_print("Multiply Operation"); multiply_operation_count++; }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 84 "main.l"
+#line 88 "main.l"
 { ret_print("Divide Operation"); divide_operation_count++; }
 	YY_BREAK
 case 29:
 /* rule 29 can match eol */
 YY_RULE_SETUP
-#line 85 "main.l"
+#line 89 "main.l"
 { line_number += 1; }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 86 "main.l"
+#line 90 "main.l"
 { yyerror("Unrecognized character"); type_errors++;}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 88 "main.l"
+#line 92 "main.l"
 ECHO;
 	YY_BREAK
-#line 1200 "lex.yy.c"
+#line 1204 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2201,7 +2205,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 88 "main.l"
+#line 92 "main.l"
 
 
 void ret_print(char *token_type)
@@ -2211,21 +2215,27 @@ void ret_print(char *token_type)
 
 void yyerror(char *message)
 {
-    printf("Error: \"%s\" in line %d. Token: %s\n", message, line_number, yytext);
 
+    printf("Error: \"%s\" in line %d. Token: %s\n", message, line_number, yytext);
+    error_count++;
+
+    if (error_count >= MAX_ERRORS) {
+        printf("Exceeded maximum error count. Terminating program.\n");
+        exit(1);
+    }
 }
 
 
 int main(int argc, char *argv[])
 {
-    yyin = fopen("input.txt", "r");
+    yyin = fopen("input.py", "r");
     printf("--------------------------------------------------------------------\n");
     printf("\t\t\tPROGRAM INFORMATION\t\t\t\n");
     printf("--------------------------------------------------------------------\n");
     yylex();
     fclose(yyin);
 
-    printf("\n----------------------------------------------------\n");
+    printf("\n----------------------------------------------------\n"); 
     printf("\t\tCODE STATISTICS\t\t\n");
     printf("----------------------------------------------------\n");
     printf("|IF Statements|\n");

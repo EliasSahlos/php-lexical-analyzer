@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#include "microTokens.h"
 
 int line_number = 1;
 int if_count = 0;
@@ -22,6 +23,9 @@ int minus_operation_count = 0;
 int multiply_operation_count = 0;
 int divide_operation_count = 0;
 int table_declaration_count = 0;
+
+int error_count = 0;
+int MAX_ERRORS = 3;
 
 void ret_print(char *token_type);
 void yyerror();
@@ -54,10 +58,10 @@ divide_operation ({variable}+{white_space}"="{white_space}+{variable}+{white_spa
 %%
 
 {white_space} ret_print("SPACE");
-"if"|"IF" { ret_print("KEYWORD_IF"); if_count++;}
-"else"|"ELSE" { ret_print("KEYWORD_ELSE"); }
-"elif"|"ELIF" { ret_print("KEYWORD_ELIF"); }
-"for"|"FOR" { ret_print("KEYWORD_FOR"); for_count++; }
+"if"|"IF" { ret_print("T_IF"); if_count++; return T_IF;}
+"else"|"ELSE" { ret_print("T_ELSE"); return T_ELSE;}
+"elif"|"ELIF" { ret_print("T_ELIF"); return T_ELIF; }
+"for"|"FOR" { ret_print("T_FOR"); for_count++; return T_FOR; }
 "return"|"RETURN" { ret_print("KEYWORD_RETURN"); }
 "input"|"INPUT" { ret_print("KEYWORD_INPUT"); }
 "print"|"PRINT" { ret_print("KEYWORD_PRINT"); }
@@ -94,14 +98,20 @@ void ret_print(char *token_type)
 
 void yyerror(char *message)
 {
-    printf("Error: \"%s\" in line %d. Token: %s\n", message, line_number, yytext);
 
+    printf("Error: \"%s\" in line %d. Token: %s\n", message, line_number, yytext);
+    error_count++;
+
+    if (error_count >= MAX_ERRORS) {
+        printf("Exceeded maximum error count. Terminating program.\n");
+        exit(1);
+    }
 }
 
 
 int main(int argc, char *argv[])
 {
-    yyin = fopen("input.txt", "r");
+    yyin = fopen("input.py", "r");
     printf("--------------------------------------------------------------------\n");
     printf("\t\t\tPROGRAM INFORMATION\t\t\t\n");
     printf("--------------------------------------------------------------------\n");
