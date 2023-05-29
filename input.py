@@ -17,7 +17,7 @@ else:
 
 if (a > b):
     print("X is bigger than Y")
-elif (a < b):
+elif (a < b):;
     print("Y is bigger than X")
 else: 
     print("X and Y are")

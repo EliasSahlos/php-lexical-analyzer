@@ -28,6 +28,13 @@ int table_declaration_count = 0;
 int error_count = 0;
 int MAX_ERRORS = 3;
 
+double error_percentage = 0;
+double if_percentage = 0;
+double for_percentage = 0;
+double user_interaction_percentage = 0;
+double math_percentage = 0;
+
+
 void ret_print(char *token_type);
 void yyerror();
 %}
@@ -51,7 +58,9 @@ if_statement ((if|IF){white_space}+"("[^)]+")":)
 elif_statement ((elif|ELIF){white_space}*"("[^)]*")":)
 else_statement ((else|ELSE)+":")
 for_statement ((for|FOR)[ \t]+({alnum})+[ \t]+(in|IN)[ \ t]+({alnum}|({alnum}*"("{digit}*")"))+[ \t]*":")
-multiply_for ({for_statement})([ \n]*[ \t]+({for_statement}))+
+
+multiply_for ({for_statement})[ \n]*[ \t]*({for_statement})
+
 function_statement ((def|DEF){white_space}({variable}|{alnum})"("{variable}")":)
 return_statement ((return|RETURN)+"("+{variable}+")")
 add_operation ({variable}+{white_space}"="{white_space}+{variable}+{white_space}"+"{white_space}+({vardig}))
@@ -112,7 +121,6 @@ void yyerror(char *message)
     }
 }
 
-
 int main(int argc, char *argv[])
 {
     
@@ -124,35 +132,40 @@ int main(int argc, char *argv[])
     yylex();
     fclose(yyin);
 
+    error_percentage = 100 * (error_count / (double)line_number);
+    if_percentage = 100 * ((if_count + if_elif_count + if_else_count) / (double)line_number);
+    for_percentage = 100 * ((for_count + for_in_count) / (double)line_number);
+    user_interaction_percentage = 100 * ((print_statement_count + input_statement_count) / (double)line_number);
+    math_percentage = 100 * ((add_operation_count + minus_operation_count + divide_operation_count + multiply_operation_count) / (double)line_number);
+
     printf("\n----------------------------------------------------\n"); 
     printf("\t\tCODE STATISTICS\t\t\n");
     printf("----------------------------------------------------\n");
-    printf("|IF Statements|\n");
-    printf("---------------------\n");
+    printf("|IF Statements| \t Percentage : %.2f \n",if_percentage);
+    printf("-------------------------\n");
     printf("IF Statement count: %d\n", if_count);
     printf("IF..ELIF..ELSE.. Statement count: %d\n", if_elif_count);
     printf("IF..ELSE.. Statement count: %d\n", if_else_count);
     printf("\n");
-    printf("|FOR Statements|\n");
-    printf("---------------------\n");
+    printf("|FOR Statements| \t Percentage : %.2f \n",for_percentage);
+    printf("-------------------------\n");
     printf("FOR Statement count: %d\n", for_in_count);
     printf("Multiply For Statement count: %d\n", mult_for_count);
-
     printf("\n");
-    printf("|User Interaction Statements|\n");
-    printf("---------------------\n");
+    printf("|User Interaction Statements| \t Percentage : %.2f \n",user_interaction_percentage);
+    printf("-------------------------\n");
     printf("Number of Print :  %d\n", print_statement_count);
     printf("Number of User Input :  %d\n", input_statement_count);
     printf("\n");
-    printf("|Math Statements|\n");
-    printf("---------------------\n");
+    printf("|Math Statements| \t Percentage : %.2f \n",math_percentage);
+    printf("-------------------------\n");
     printf("Add Operations :  %d\n", add_operation_count);
     printf("Minus Operations :  %d\n", minus_operation_count);
     printf("Multiply Operations :  %d\n", multiply_operation_count);
     printf("Divide Operations :  %d\n", divide_operation_count);
     printf("\n");
     printf("|Other Information|\n");
-    printf("---------------------\n");
+    printf("-------------------------\n");
     printf("Functions :  %d\n", function_statemnt_count);
     printf("Variable Declaration :  %d\n", variable_declaration_count);
     printf("Table Declaration :  %d\n", table_declaration_count);
@@ -160,9 +173,8 @@ int main(int argc, char *argv[])
 
     printf("\n");
     printf("|Program Errors|\n");
-    printf("---------------------\n");
-    printf("Typing Errors :  %d\n", type_errors);
+    printf("-------------------------\n");
+    printf("Typing Errors :  %d \t Error Percentage : %.2f\n", type_errors,error_percentage);
     printf("\n");
 }
-
-    
+  
